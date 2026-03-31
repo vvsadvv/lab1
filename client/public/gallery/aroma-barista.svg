@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Бариста готовит кофе">
+  <defs>
+    <linearGradient id="bg2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8e8d7" />
+      <stop offset="100%" stop-color="#d9b99a" />
+    </linearGradient>
+    <linearGradient id="apron" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#5d3b2a" />
+      <stop offset="100%" stop-color="#3f261c" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg2)" />
+  <rect y="760" width="1600" height="240" fill="#9d6038" />
+  <rect x="0" y="560" width="1600" height="180" fill="#bc7a4d" />
+  <circle cx="810" cy="330" r="125" fill="#f2cfb3" />
+  <rect x="670" y="440" width="280" height="290" rx="34" fill="url(#apron)" />
+  <rect x="740" y="490" width="140" height="190" rx="24" fill="#b4784a" />
+  <rect x="470" y="500" width="180" height="60" rx="20" fill="#f2cfb3" />
+  <rect x="970" y="500" width="180" height="60" rx="20" fill="#f2cfb3" />
+  <rect x="560" y="565" width="500" height="80" rx="24" fill="#f4e7d5" />
+  <ellipse cx="810" cy="604" rx="150" ry="34" fill="#c98c5f" />
+  <ellipse cx="810" cy="595" rx="120" ry="24" fill="#6f4a35" />
+  <path d="M790 530c24-35 35-52 26-72-8-18-25-27-18-50" stroke="#ffffff" stroke-width="10" fill="none" stroke-linecap="round" />
+  <path d="M840 530c24-35 35-52 26-72-8-18-25-27-18-50" stroke="#ffffff" stroke-width="10" fill="none" stroke-linecap="round" />
+</svg>

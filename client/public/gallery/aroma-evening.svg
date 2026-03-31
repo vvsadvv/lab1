@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Вечерняя терраса кафе">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#3f3043" />
+      <stop offset="100%" stop-color="#8b5a5a" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)" />
+  <rect y="700" width="1600" height="300" fill="#6f4130" />
+  <circle cx="1300" cy="180" r="74" fill="#f7d5a8" />
+  <rect x="160" y="190" width="1280" height="470" rx="28" fill="#2f2129" />
+  <rect x="200" y="230" width="560" height="390" rx="18" fill="#f9d2a3" />
+  <rect x="840" y="230" width="560" height="390" rx="18" fill="#f5c489" />
+  <circle cx="360" cy="425" r="120" fill="#724a3a" />
+  <circle cx="1050" cy="425" r="120" fill="#724a3a" />
+  <rect x="300" y="700" width="220" height="120" rx="20" fill="#9f623d" />
+  <rect x="1080" y="700" width="220" height="120" rx="20" fill="#9f623d" />
+  <rect x="690" y="740" width="220" height="90" rx="20" fill="#f3d6b2" />
+  <circle cx="780" cy="785" r="28" fill="#6b4634" />
+  <circle cx="830" cy="785" r="28" fill="#6b4634" />
+  <circle cx="320" cy="120" r="8" fill="#f4d7bd" />
+  <circle cx="390" cy="80" r="6" fill="#f4d7bd" />
+  <circle cx="460" cy="140" r="7" fill="#f4d7bd" />
+  <circle cx="520" cy="90" r="5" fill="#f4d7bd" />
+</svg>

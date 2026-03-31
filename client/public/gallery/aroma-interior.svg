@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Интерьер кафе">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f6e3ca" />
+      <stop offset="100%" stop-color="#d6b08a" />
+    </linearGradient>
+    <linearGradient id="floor" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#c08054" />
+      <stop offset="100%" stop-color="#9b5e38" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)" />
+  <rect y="690" width="1600" height="310" fill="url(#floor)" />
+  <rect x="120" y="180" width="470" height="360" rx="24" fill="#fff4e5" />
+  <rect x="170" y="230" width="370" height="260" rx="16" fill="#f9dcb8" />
+  <rect x="1010" y="140" width="460" height="390" rx="24" fill="#fff4e5" />
+  <rect x="1060" y="190" width="360" height="290" rx="18" fill="#f7d2a8" />
+  <rect x="660" y="470" width="280" height="220" rx="22" fill="#6f3e25" />
+  <circle cx="800" cy="430" r="130" fill="#6f3e25" />
+  <circle cx="800" cy="430" r="86" fill="#8c5130" />
+  <rect x="430" y="620" width="180" height="80" rx="16" fill="#78462b" />
+  <rect x="990" y="620" width="180" height="80" rx="16" fill="#78462b" />
+  <rect x="200" y="570" width="230" height="120" rx="18" fill="#875132" />
+  <rect x="1170" y="560" width="230" height="130" rx="18" fill="#875132" />
+  <circle cx="280" cy="635" r="22" fill="#f3e3cc" />
+  <circle cx="1270" cy="628" r="22" fill="#f3e3cc" />
+</svg>
