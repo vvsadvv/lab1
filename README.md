@@ -70,3 +70,10 @@
 - `DELETE /api/pages/:id` (auth)
 - `POST /api/feedback/public`
 - `GET /api/feedback` (auth)
+- `GET /api/cache/stats` (admin)
+- `DELETE /api/cache/clear` (admin)
+
+## ЛР2: Кэширование и тесты
+- Реализовано кэширование публичных страниц сайта с TTL и инвалидацией после CRUD.
+- Добавлены unit и интеграционные тесты backend.
+- Отчет по ЛР2: `report/LAB2_REPORT.md`.

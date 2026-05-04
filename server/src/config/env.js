@@ -24,5 +24,7 @@ module.exports = {
   dbPassword: process.env.DB_PASSWORD || "postgres",
   dbSsl: toBoolean(process.env.DB_SSL, false),
   dbStorage: process.env.DB_STORAGE || "./data/database.sqlite",
+  cacheEnabled: toBoolean(process.env.CACHE_ENABLED, true),
+  cacheTtlMs: Number(process.env.CACHE_TTL_MS) || 60_000,
   serverRoot,
 };
