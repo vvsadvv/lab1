@@ -1,8 +1,10 @@
 const { Op } = require("sequelize");
 const { Page } = require("../models");
 const { mapPageToResponse, serializeExtraData } = require("../services/pageService");
+const { invalidatePrefix, readThrough } = require("../services/cacheService");
 
 const slugPattern = /^[a-z0-9-]+$/;
+const publicCachePrefix = "pages:public:";
 
 const normalizePayload = (body) => ({
   slug: body.slug?.trim().toLowerCase(),
@@ -28,34 +30,66 @@ const validateRequiredFields = (data) => {
 };
 
 const getPublicPages = async (req, res) => {
-  const pages = await Page.findAll({
-    where: {
-      isPublished: true,
-      showInMenu: true,
-    },
-    order: [
-      ["menuOrder", "ASC"],
-      ["title", "ASC"],
-    ],
-  });
+  const bypassCache = req.query.noCache === "1";
+  const loadPages = async () => {
+    const pages = await Page.findAll({
+      where: {
+        isPublished: true,
+        showInMenu: true,
+      },
+      order: [
+        ["menuOrder", "ASC"],
+        ["title", "ASC"],
+      ],
+    });
+    return pages.map(mapPageToResponse);
+  };
 
-  return res.json(pages.map(mapPageToResponse));
+  if (bypassCache) {
+    res.set("x-cache", "BYPASS");
+    return res.json(await loadPages());
+  }
+
+  const key = `${publicCachePrefix}menu`;
+  const result = await readThrough(key, loadPages);
+  res.set("x-cache", result.cacheStatus);
+  return res.json(result.value);
 };
 
 const getPublicPageBySlug = async (req, res) => {
   const { slug } = req.params;
-  const page = await Page.findOne({
-    where: {
-      slug,
-      isPublished: true,
-    },
-  });
+  const bypassCache = req.query.noCache === "1";
 
-  if (!page) {
-    return res.status(404).json({ message: "Страница не найдена" });
+  const loadPage = async () => {
+    const page = await Page.findOne({
+      where: {
+        slug,
+        isPublished: true,
+      },
+    });
+
+    if (!page) {
+      return null;
+    }
+    return mapPageToResponse(page);
+  };
+
+  if (bypassCache) {
+    const page = await loadPage();
+    if (!page) {
+      return res.status(404).json({ message: "Страница не найдена" });
+    }
+    res.set("x-cache", "BYPASS");
+    return res.json(page);
   }
 
-  return res.json(mapPageToResponse(page));
+  const key = `${publicCachePrefix}slug:${slug}`;
+  const result = await readThrough(key, loadPage);
+  if (!result.value) {
+    return res.status(404).json({ message: "Страница не найдена" });
+  }
+  res.set("x-cache", result.cacheStatus);
+  return res.json(result.value);
 };
 
 const getAllPages = async (req, res) => {
@@ -88,6 +122,7 @@ const createPage = async (req, res) => {
     ...data,
     isSystem: false,
   });
+  invalidatePrefix(publicCachePrefix);
   return res.status(201).json(mapPageToResponse(createdPage));
 };
 
@@ -120,6 +155,7 @@ const updatePage = async (req, res) => {
   }
 
   await page.update(data);
+  invalidatePrefix(publicCachePrefix);
   return res.json(mapPageToResponse(page));
 };
 
@@ -136,6 +172,7 @@ const deletePage = async (req, res) => {
   }
 
   await page.destroy();
+  invalidatePrefix(publicCachePrefix);
   return res.status(204).send();
 };
 
