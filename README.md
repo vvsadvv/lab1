@@ -77,3 +77,17 @@
 - Реализовано кэширование публичных страниц сайта с TTL и инвалидацией после CRUD.
 - Добавлены unit и интеграционные тесты backend.
 - Отчет по ЛР2: `report/LAB2_REPORT.md`.
+
+## ЛР3: Docker Compose
+- Реализован запуск сайта через Docker Compose.
+- В Compose включены службы `client` (React + Nginx), `server` (Express API) и `db` (PostgreSQL).
+- Запуск:
+  ```bash
+  docker compose up --build -d
+  ```
+- Остановка:
+  ```bash
+  docker compose down
+  ```
+- После запуска сайт доступен по адресу `http://localhost:5173`, API - по адресу `http://localhost:5000`.
+- Отчет по ЛР3: `report/LAB3_REPORT.md`.
